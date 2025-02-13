@@ -67,4 +67,5 @@ def main():
     for i in range(0, 11):
         print(f"{2:>2} ^ {i:>2} is {2**i:>4}")
 
+
 main()
