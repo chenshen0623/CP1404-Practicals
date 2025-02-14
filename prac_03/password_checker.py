@@ -51,7 +51,6 @@ def is_valid_password(password):
 
     if number_of_lower < 1 or number_of_upper < 1 or number_of_digit < 1:
             return False
-    # and return False if it's zero
 
     if IS_SPECIAL_CHARACTER_REQUIRED and number_of_special < 1:
         return False
@@ -59,5 +58,4 @@ def is_valid_password(password):
     return True
 
 
-    # if we get here (without returning False), then the password must be valid
 main()
