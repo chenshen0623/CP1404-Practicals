@@ -1,5 +1,10 @@
-import csv
+"""
+Wimbledon
+Estimate: 30 minutes
+Actual:   50 minutes
+"""
 
+import csv
 FILENAME = "wimbledon.csv"
 
 def main():
