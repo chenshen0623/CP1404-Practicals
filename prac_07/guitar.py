@@ -17,3 +17,7 @@ class Guitar:
     def __lt__(self, other):
         """Less than, using to sort guitars by year released."""
         return self.year < other.year
+
+    def get_age(self):
+        """Return how old the guitar is in years."""
+        return CURRENT_YEAR - self.year
