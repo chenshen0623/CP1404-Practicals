@@ -13,3 +13,7 @@ class Guitar:
     def __str__(self):
         """Return a string representation of the guitar."""
         return f'{self.name} ({self.year}) : ${self.cost:,.2f}'
+
+    def __lt__(self, other):
+        """Less than, using to sort guitars by year released."""
+        return self.year < other.year
