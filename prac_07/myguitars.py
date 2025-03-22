@@ -9,3 +9,8 @@ def main():
     new_guitars = get_guitars()
     guitars += new_guitars
     guitars.sort()
+    print()
+    print("Guitars:")
+    for guitar in guitars:
+        print(guitar)
+    save_guitars(FILENAME, guitars)
