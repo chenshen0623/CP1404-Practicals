@@ -11,6 +11,12 @@ FILENAME = 'projects.txt'
 MENU = ('- (L)oad projects\n- (S)ave projects\n- (D)isplay projects\n- (F)ilter projects by date\n'
         '- (A)dd new project\n- (U)pdate project\n- (Q)uit')
 DATE_FORMAT = '%d/%m/%Y'
+LOWEST_PRIORITY = 1
+HIGHEST_PRIORITY = 9
+MINIMUM_PERCENTAGE = 0
+MAXIMUM_PERCENTAGE = 100
+MINIMUM_COST = 0.0
+MAXIMUM_COST = 999999999.9
 
 def main():
     """Menu-driven project management software with options to load, save, display, filter, add, and update projects."""
@@ -148,3 +154,14 @@ def get_valid_date(prompt):
         except ValueError:
             print("Invalid date format")
     return date_string
+
+def add_project(projects):
+    """Ask the user for the inputs and add a new project to memory."""
+    print("Let's add a new project")
+    name = input("Name: ")
+    start_date = get_valid_date("Start date (dd/mm/yy): ")
+    priority = get_valid_number("Priority: ", int, LOWEST_PRIORITY, HIGHEST_PRIORITY)
+    cost_estimate = get_valid_number("Cost estimate: $", float, MINIMUM_COST, MAXIMUM_COST)
+    completion_percentage = get_valid_number("Percent complete: ", int, MINIMUM_PERCENTAGE, MAXIMUM_PERCENTAGE)
+    project = Project(name, start_date, priority, cost_estimate, completion_percentage)
+    projects.append(project)
