@@ -66,3 +66,15 @@ def save_projects(projects, filename):
     with open(filename, 'w') as out_file:
         out_file.writelines(lines)
     print(f"Saved {len(projects)} projects to {filename}")
+
+def load_new_projects(projects):
+    """Prompt the user for a filename, load additional projects from it, and append them to the existing list."""
+    while True:
+        try:
+            filename = input("Filename to load: ")
+            new_projects = load_projects(filename)
+            break
+        except FileNotFoundError:
+            print("File not found, please enter a valid filename.")
+    projects += new_projects
+    print(f"Loaded {len(new_projects)} projects from {filename}, total {len(projects)} projects now.")
