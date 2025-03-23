@@ -178,3 +178,60 @@ def get_valid_number(prompt, number_type, minimum, maximum):
         except ValueError:
             print("Invalid input")
     return number
+
+def update_projects(projects):
+    """
+    Update the completion percentage or priority of an existing project.
+    Display all projects with an index, then prompt the user to choose which to update.
+    """
+    if not projects:
+        print("There are no projects to update.")
+        return
+
+    # Display all projects
+    for i, project in enumerate(projects):
+        print(f"{i} {project}")
+
+    # Prompt user to select a project by index
+    while True:
+        try:
+            project_index = int(input("Choose the project index to update: "))
+            if 0 <= project_index < len(projects):
+                break
+            else:
+                print("Invalid index. Please try again.")
+        except ValueError:
+            print("Please enter a valid integer.")
+
+    project_to_update = projects[project_index]
+    print(f"You are updating: {project_to_update}")
+
+    # Ask which field to update
+    print("(C)ompletion or (P)riority?")
+    update_choice = input("Choose update type: ").strip().upper()
+    if update_choice == 'C':
+        while True:
+            try:
+                new_completion = int(input("New completion percentage (0-100): "))
+                if 0 <= new_completion <= 100:
+                    project_to_update.update_percentage(new_completion)
+                    print("Completion percentage updated.")
+                    break
+                else:
+                    print("Completion percentage must be between 0 and 100.")
+            except ValueError:
+                print("Please enter an integer.")
+    elif update_choice == 'P':
+        while True:
+            try:
+                new_priority = int(input("New priority (integer): "))
+                project_to_update.update_priority(new_priority)
+                print("Priority updated.")
+                break
+            except ValueError:
+                print("Please enter an integer.")
+    else:
+        print("Invalid update type.")
+
+
+main()
