@@ -83,3 +83,35 @@ def proceed_saving_task(projects):
     """Save projects to a file."""
     filename = input("Filename to save: ")
     save_projects(projects, filename)
+
+def display_projects(projects):
+    """Display incomplete and completed projects sorted by priority."""
+    if not projects:
+        print("No projects to display")
+        return
+
+    incomplete_projects = []
+    completed_projects = []
+    for project in projects:
+        if project.is_completed():
+            completed_projects.append(project)
+        else:
+            incomplete_projects.append(project)
+
+    incomplete_projects.sort()
+    completed_projects.sort()
+
+    print("Incomplete projects: ")
+    if not incomplete_projects:
+            print("  All projects have been completed.")
+    else:
+            for project in sorted(incomplete_projects):
+                    print(f'  {project}')
+
+    print("Completed projects: ")
+    if not completed_projects:
+            print("  No project has been completed yet.")
+    else:
+            for project in sorted(completed_projects):
+                    print(f'  {project}')
+
