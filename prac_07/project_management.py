@@ -165,3 +165,16 @@ def add_project(projects):
     completion_percentage = get_valid_number("Percent complete: ", int, MINIMUM_PERCENTAGE, MAXIMUM_PERCENTAGE)
     project = Project(name, start_date, priority, cost_estimate, completion_percentage)
     projects.append(project)
+
+def get_valid_number(prompt, number_type, minimum, maximum):
+    """Prompt the user until a valid number of the given type within the range [minimum, maximum] is entered."""
+    while True:
+        try:
+            number = number_type(input(prompt))
+            if number < minimum or number > maximum:
+                print(f"Number must be between {minimum} and {maximum} inclusive.")
+            else:
+                break
+        except ValueError:
+            print("Invalid input")
+    return number
