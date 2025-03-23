@@ -137,3 +137,14 @@ def filter_projects(projects):
             for filtered_project in filtered_projects:
                 filtered_project.start_date = filtered_project.start_date.strftime(DATE_FORMAT)
                 print(filtered_project)
+
+def get_valid_date(prompt):
+    """Get valid dat."""
+    while True:
+        try:
+            date_string = input(prompt)
+            datetime.datetime.strptime(date_string, DATE_FORMAT).date()
+            break
+        except ValueError:
+            print("Invalid date format")
+    return date_string
