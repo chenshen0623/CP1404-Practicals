@@ -54,3 +54,15 @@ def load_projects(filename):
             project = Project(parts[0], parts[1], int(parts[2]), float(parts[3]), int(parts[4]))
             projects.append(project)
     return projects
+
+def save_projects(projects, filename):
+    """Save projects to a file."""
+    header = "Name\tStart Date\tPriority\tCost Estimate\tCompletion Percentage\n"
+    lines = [header]
+    for project in projects:
+        line = (f"{project.name}\t{project.start_date}\t{project.priority}\t"
+                f"{project.cost_estimate}\t{project.completion_percentage}\n")
+        lines.append(line)
+    with open(filename, 'w') as out_file:
+        out_file.writelines(lines)
+    print(f"Saved {len(projects)} projects to {filename}")
