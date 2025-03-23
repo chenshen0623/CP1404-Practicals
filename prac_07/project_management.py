@@ -115,3 +115,25 @@ def display_projects(projects):
             for project in sorted(completed_projects):
                     print(f'  {project}')
 
+def filter_projects(projects):
+    """Ask the user for a date and display only projects that start after that date, sorted by date."""
+    if not projects:
+        print("No projects to filter")
+    else:
+        date_string = get_valid_date("Show projects that start after date (dd/mm/yy): ")
+        date = datetime.datetime.strptime(date_string, DATE_FORMAT).date()
+
+        filtered_projects = [project for project in projects
+                             if datetime.datetime.strptime(project.start_date, DATE_FORMAT).date() >= date]
+
+        if not filtered_projects:
+            print(f"No project starts after {date_string}")
+        else:
+            for filtered_project in filtered_projects:
+                filtered_project.start_date = (
+                    datetime.datetime.strptime(filtered_project.start_date, DATE_FORMAT).date())
+            filtered_projects.sort(key=attrgetter('start_date'))
+
+            for filtered_project in filtered_projects:
+                filtered_project.start_date = filtered_project.start_date.strftime(DATE_FORMAT)
+                print(filtered_project)
