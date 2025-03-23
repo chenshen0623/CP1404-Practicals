@@ -78,3 +78,8 @@ def load_new_projects(projects):
             print("File not found, please enter a valid filename.")
     projects += new_projects
     print(f"Loaded {len(new_projects)} projects from {filename}, total {len(projects)} projects now.")
+
+def proceed_saving_task(projects):
+    """Save projects to a file."""
+    filename = input("Filename to save: ")
+    save_projects(projects, filename)
