@@ -13,7 +13,8 @@ class BoxLayoutDemo(App):
 
     def handle_greet(self):
         """Display a greeting message."""
-        self.root.ids.output_label.text = f"Hello {self.root.ids.input_name.text}"
+        name = self.root.ids.input_name.text
+        self.root.ids.output_label.text = f"Hello {name}"
 
     def clear_text(self):
         """Clear texts of input box and output label."""
