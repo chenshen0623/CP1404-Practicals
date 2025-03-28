@@ -19,3 +19,12 @@ class MilesConvert(App):
         """Handle calculation (could be button press or other call)."""
         value = self.get_valid_miles()
         self.converted_distance = str(value * MILES_TO_KM)
+
+    def handle_increment(self, change):
+        """
+        Handle up/down button press, update the text input with new value.
+        :param change: the amount to change
+        """
+        value = self.get_valid_miles()
+        self.root.ids.miles_input.text = str(value + change)
+
