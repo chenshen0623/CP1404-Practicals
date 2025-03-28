@@ -14,3 +14,8 @@ class MilesConvert(App):
         self.title = 'Miles Converter'
         self.root = Builder.load_file('convert_miles_km.kv')
         return self.root
+
+    def handle_calculation(self):
+        """Handle calculation (could be button press or other call)."""
+        value = self.get_valid_miles()
+        self.converted_distance = str(value * MILES_TO_KM)
