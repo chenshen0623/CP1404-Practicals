@@ -16,7 +16,7 @@ class SilverServiceTaxi(Taxi):
 
     def get_fare(self):
         """Return the price add flag fall for the silver taxi trip."""
-        return super().get_fare() + self.flag_fall
+        return round(super().get_fare() + self.flag_fall, 2)
 
     def __str__(self):
         """Return a string like the taxi but with current fare distance and total price."""
