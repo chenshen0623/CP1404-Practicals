@@ -49,3 +49,16 @@ def choose_taxi(taxis):
             print("Invalid taxi choice")
     except ValueError:
         print("Invalid input")
+
+def drive_taxi(current_taxi):
+    """"Ask the user how far to drive and calculate the trip cost and return distance."""
+    try:
+        distance = float(input("Drive how far? "))
+        current_taxi.start_fare()
+        current_taxi.drive(distance)
+        fare = current_taxi.get_fare()
+        print(f"Your {current_taxi.name} trip cost you ${fare:.2f}")
+        return fare
+    except ValueError:
+        print("Invalid input. Please enter a number.")
+        return 0
