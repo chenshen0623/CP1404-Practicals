@@ -62,3 +62,10 @@ def drive_taxi(current_taxi):
     except ValueError:
         print("Invalid input. Please enter a number.")
         return 0
+
+def display_taxis(taxis):
+    """Display the list of taxis with their current status."""
+    for i in range(len(taxis)):
+        print(f"{i} - {taxis[i]}")
+
+main()
