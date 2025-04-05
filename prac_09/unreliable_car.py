@@ -1,3 +1,5 @@
+from random import uniform
+
 from prac_09.car import Car
 
 
@@ -11,3 +13,10 @@ class UnreliableCar(Car):
     def __str__(self):
         """Return a string like a Car but with current fare distance."""
         return f"{super().__str__()}, have {self.reliability}% chance to drive the car."
+
+    def drive(self, distance):
+        """Random number is less than reliability."""
+        distance_driven = 0
+        if uniform(0, 100) < self.reliability:
+            distance_driven = super().drive(distance)
+        return distance_driven
