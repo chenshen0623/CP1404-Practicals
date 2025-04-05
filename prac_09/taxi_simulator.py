@@ -31,3 +31,6 @@ def main():
             print("Invalid option")
         choice = input(f"{MENU}\n>>>").lower()
 
+    print(f"Total trip cost: ${bill:.2f}")
+    print("Taxis are now:")
+    display_taxis(taxis)
